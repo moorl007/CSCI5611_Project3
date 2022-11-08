@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>CSCI 5611 Project 1</h1>
+<h1>Ben Moorlach</h1>
+
+
+<h2>Images</h2>
+<figure>
+    <img src=".png" alt="" width = 500 height = 500>
+    <figcaption></figcaption>
+</figure>
+
+
+
+
+
+<h2>List of features attempted and description</h2>
+<ul>
+    <li>Multi-Arm IK (40 points)
+        <ul>
+            <li>Video 1 and Video 2 both showcase the animation of 2 arms, each with 10 joints moving from their initial positions to a goal</li>
+            <li>After both arms have reached their goal, the goal moves so that first, only the arm on the right can reach the goal, and then so that neither arms can reach the goal.</li>
+        </ul>
+    </li>
+    <li>Joint Limits (20 Points)
+        <ul>
+            <li>Video 1 shows the robot arms animating towards the goal without enforcing joint limits.  It can be seen that the right arms folds in on itself in a way that would not be possible in a real robot.</li>
+            <li>Videio 2 performs the same animation as video 1, but the joint angle of 40 degrees is enforced</li>
+        </ul>
+    </li>
+    <li>3D Simulation and Rendering (20 Points)
+        <ul>
+            <li>I used the CAMERA class created by Liam Tyler</li>
+            <li>Additional overhead was required to </li>
+        </ul>
+    </li>
+    <li>User Interaction
+        <ul>
+            <li>Air drag is calculated for the triangles formed by cloth nodes.  I find the force vector on this triangle, divide it by 3, and add that force to each node.</li>
+        </ul>
+    </li>
+    <li>Ripping Tearing
+        <ul>
+            <li>If the distnace between two nodes in the cloth are far enough apart, the spring between those two nodes stops exisiting and I no longer calculate the forces from that spring on that node</li>
+            <li>If a node has had a spring destroyed because it is too far away from another node, I no longer render any triangles which were formed by that node.</li>
+        </ul>
+    </li>
+</ul>
+
+
+<h2>Code</h2>
+<a href="https://docs.google.com/document/d/1j4h7Ko4VuNnK3bgzDNPw2yvR9aeUfne21ikubM-pVHo/edit?usp=sharing">Joint Classw</a><br>
+<a href="https://docs.google.com/document/d/15x4pJ4YSKu-SMCykK8JiP1oCeivij0Nh7F-m59YKm4Y/edit?usp=sharing">Arm Class</a><br>
+<a href="https://docs.google.com/document/d/1kKbF5NrC4rPPzgQWVXmJRXqz_GSLLNQd_f2DrsOHJtA/edit?usp=sharing">Camera Class</a><br>
+<a href="https://docs.google.com/document/d/1FXcudY963MIFijeF3mV2XntelpMCVDkALYVUO-NosBg/edit?usp=sharing">Simulation Code</a><br>
+
+<h2>Tools and Libraries</h2>
+<p>I used the camera class created by Liam Tyler to move the camera around the 3D environment, as well as Processing to display the behavior of my simulations.</p>
+
+<h2>Difficulties</h2>
+<p>
+</p>
+
+
+<h2>Videos</h2>
+<iframe width="372" height="661" src="https://www.youtube.com/embed/c8PFDBaZB3Y" title="Project3 Without Limits" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h3>VIDEO 1: Animation of robot arms using Inverse Kinematics without a limit on joint angles</h3>
+
+<iframe width="372" height="661" src="https://www.youtube.com/embed/ljncFNtEfps" title="Project3 With Limits" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h3>VIDEO 2: Animation of robot arms using Inverse Kimematics with a limit on joint angles </h3>
+
+<h3>VIDEO 3: Video of the flag totally tearing in half and the half that isn't connected to the flag pole flies away.</h3>
+
+
+</body>
+</html>
