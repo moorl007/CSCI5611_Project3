@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h1>CSCI 5611 Project 1</h1>
+<h1>CSCI 5611 Project 3</h1>
 <h1>Ben Moorlach</h1>
 
 
 <h2>Images</h2>
 <figure>
-    <img src=".png" alt="" width = 500 height = 500>
-    <figcaption></figcaption>
+    <img src="withoutLimits.png" alt="CCD inverse kinematics with no limit on joint angles" width = 500 height = 500>
+    <figcaption>CCD inverse kinematics with no limit on joint angles</figcaption>
+</figure>
+
+<figure>
+    <img src="withLimits.png" alt="CCD inverse kinematics with a 40 degree limit on joint angles" width = 500 height = 500>
+    <figcaption>CCD inverse kinematics with a 40 degree limit on joint angles</figcaption>
+</figure>
+
+<figure>
+    <img src="user.png" alt="3D showcase of CCD inverse kimematics with joint limits" width = 500 height = 500>
+    <figcaption>3D showcase of CCD inverse kinematics with joint limits</figcaption>
 </figure>
 
 
@@ -21,29 +31,25 @@
         <ul>
             <li>Video 1 and Video 2 both showcase the animation of 2 arms, each with 10 joints moving from their initial positions to a goal</li>
             <li>After both arms have reached their goal, the goal moves so that first, only the arm on the right can reach the goal, and then so that neither arms can reach the goal.</li>
+            <li>Cyclic coordinate descent inverse kinematics implemented</li>
         </ul>
     </li>
     <li>Joint Limits (20 Points)
         <ul>
             <li>Video 1 shows the robot arms animating towards the goal without enforcing joint limits.  It can be seen that the right arms folds in on itself in a way that would not be possible in a real robot.</li>
-            <li>Videio 2 performs the same animation as video 1, but the joint angle of 40 degrees is enforced</li>
+            <li>Video 2 performs the same animation as video 1, but the joint angle of 40 degrees is enforced</li>
+            <li>Video 3 showcases joint limits in a 3D senario, along with user interaction</li>
         </ul>
     </li>
     <li>3D Simulation and Rendering (20 Points)
         <ul>
             <li>I used the CAMERA class created by Liam Tyler</li>
-            <li>Additional overhead was required to </li>
+            <li>Additional overhead was required to rotate the joints in the correct plane and set joint limits</li>
         </ul>
     </li>
-    <li>User Interaction
+    <li>User Interaction (10 points)
         <ul>
-            <li>Air drag is calculated for the triangles formed by cloth nodes.  I find the force vector on this triangle, divide it by 3, and add that force to each node.</li>
-        </ul>
-    </li>
-    <li>Ripping Tearing
-        <ul>
-            <li>If the distnace between two nodes in the cloth are far enough apart, the spring between those two nodes stops exisiting and I no longer calculate the forces from that spring on that node</li>
-            <li>If a node has had a spring destroyed because it is too far away from another node, I no longer render any triangles which were formed by that node.</li>
+            <li>Video 3 showcases user interaction by allowing the user to select which of the four arm's goal positions they would like to manipulate in any of the 6 directions:</li>
         </ul>
     </li>
 </ul>
@@ -60,7 +66,19 @@
 
 <h2>Difficulties</h2>
 <p>
+    I didn't really ever attempt to implement inverse kinematics in 2D because I wanted my framework to be built with the intention of having a 3D inverse kinematics implementation.
+    Implementing inverse kinematics in 3D was actually not too bad.  I was able to use rotation matrices to rotate my joints to where I wanted them to point, and implementing CCD was
+    not too bad.  My difficulty came from introducing joint limits.  In 2D, this idea is pretty easy, because all of the vectors are on the Z=0 plane, but in 3D the rotation of a joint
+    could be a rotation about any arbitrary axis.  Luckily, with CCD, I know the axis I want to rotate around, it is the axis that is the cross product of the vector that is created from
+    going from the current root of the joint to the end of the arm, and the vector that is created from going from the root of the current joint to the goal position.  This cross product
+    gave me the normal of the plane I wanted.  I would then find the direction that is the limit I set my joint angle to be, that is in the direction of the goal, and in the same plane as
+    my previous joint direction and the direction to the goal.  An image visualizing this problem is shown below.
 </p>
+
+<figure>
+    <img src="jointLimit.png" alt="Visual representation of joint limit problem" width = 500 height = 500>
+    <figcaption>Visual representation of joint limit problem</figcaption>
+</figure>
 
 
 <h2>Videos</h2>
